@@ -43,8 +43,12 @@
 	border: 2px solid black;
 }
 .available {
+	cursor: pointer;
 	height: 12px;
 	width: 12px;
 	border-radius: 50%;
+	background-color: green;
+}
+.available_figure {
 	background-color: green;
 }
