@@ -18,6 +18,7 @@
 	flex-wrap: wrap;
 }
 .cell {
+	box-sizing: border-box;
 	width: 64px;
 	height: 64px;
 	display: flex;
@@ -25,6 +26,7 @@
 	align-items: center;
 }
 .cell img {
+	cursor: pointer;
 	width: 48px;
 	height: 48px;
 	position: relative;
@@ -35,4 +37,14 @@
 }
 .white {
 	background-color: #f2c294;
+}
+
+.selected {
+	border: 2px solid black;
+}
+.available {
+	height: 12px;
+	width: 12px;
+	border-radius: 50%;
+	background-color: green;
 }
