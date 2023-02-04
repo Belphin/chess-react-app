@@ -46,7 +46,7 @@ const BoardComponent: FC<BoardProps> = ({
 	}
 
 	return (
-		<>
+		<div>
 			<h3>{currentPlayer?.color} move</h3>
 			<div className="board">
 				{board.cells.map((row, index) => (
@@ -64,7 +64,7 @@ const BoardComponent: FC<BoardProps> = ({
 					</React.Fragment>
 				))}
 			</div>
-		</>
+		</div>
 	);
 };
 
