@@ -1,6 +1,6 @@
 import { Board } from "./Board";
 import { Colors } from "./Colors";
-import { Figure } from "./figures/Figure";
+import { Figure, FigureNames } from "./figures/Figure";
 
 export class Cell {
 	readonly x: number;
@@ -83,6 +83,24 @@ export class Cell {
 		return true;
 	}
 
+	isEmptyToFigure(target: Cell): boolean {
+		if (target.x === 0) {
+			for (let x = 0 + 1; x < this.x; x++) {
+				if (!this.board.getCell(x, this.y).isEmpty()) {
+					return false;
+				}
+			}
+		}
+		if (target.x === 7) {
+			for (let x = 7 - 1; x > this.x; x--) {
+				if (!this.board.getCell(x, this.y).isEmpty()) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	setFigure(figure: Figure) {
 		this.figure = figure;
 		this.figure.cell = this;
@@ -95,13 +113,15 @@ export class Cell {
 	}
 
 	moveFigure(target: Cell) {
-		if (this.figure && this.figure?.canMove(target)) {
+		if (target.figure?.name === FigureNames.ROOK) {
+			this.figure?.castlingFigure(target);
+		} else if (this.figure && this.figure?.canMove(target)) {
 			this.figure?.moveFigure(target);
 			if (target.figure) {
 				this.addLostFigure(target.figure);
 			}
 			target.setFigure(this.figure);
-			this.figure = null;
 		}
+		this.figure = null;
 	}
 }

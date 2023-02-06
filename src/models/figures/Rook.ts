@@ -17,4 +17,9 @@ export class Rook extends Figure {
 		if (this.cell.isEmptyHorizontal(target)) return true;
 		return false;
 	}
+
+	moveFigure(target: Cell): void {
+		super.moveFigure(target);
+		this.isFirstStep = false;
+	}
 }

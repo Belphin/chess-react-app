@@ -88,11 +88,11 @@ export class Board {
 	}
 
 	public addFigures() {
-		this.addPawns();
+		// this.addPawns();
 		this.addKings();
-		this.addQueens();
+		// this.addQueens();
 		this.addBishops();
-		this.addKnights();
+		// this.addKnights();
 		this.addRooks();
 	}
 }
