@@ -59,3 +59,28 @@
 	margin-left: 50px;
 	background-color: lightgray;
 }
+
+.modal {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal form {
+	background-color: #e7e7e7;
+	border-radius: 40px;
+	min-height: 300px;
+	min-width: 400px;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 40px 0;
+	justify-content: space-around;
+	align-items: center;
+}

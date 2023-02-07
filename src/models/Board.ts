@@ -9,6 +9,7 @@ import { Queen } from "./figures/Queen";
 import { Rook } from "./figures/Rook";
 
 export class Board {
+	winner: null | Colors = null;
 	cells: Cell[][] = [];
 	lostBlackFigures: Figure[] = [];
 	lostWhiteFigures: Figure[] = [];
@@ -90,9 +91,9 @@ export class Board {
 	public addFigures() {
 		// this.addPawns();
 		this.addKings();
-		// this.addQueens();
-		this.addBishops();
+		this.addQueens();
+		// this.addBishops();
 		// this.addKnights();
-		this.addRooks();
+		// this.addRooks();
 	}
 }

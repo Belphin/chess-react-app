@@ -34,7 +34,10 @@ export class Figure {
 		if (target.figure?.color === this.color) return false;
 		return true;
 	}
-	moveFigure(target: Cell) {}
+	moveFigure(target: Cell) {
+		if (target.figure?.name === FigureNames.KING)
+			this.cell.board.winner = this.color;
+	}
 
 	castlingFigure(target: Cell) {}
 }

@@ -1,11 +1,14 @@
 import React, { FC, useState, useEffect } from "react";
 import { Board } from "../models/Board";
 import { Cell } from "../models/Cell";
+import { Colors } from "../models/Colors";
 import { Player } from "../models/Player";
 import CellComponent from "./CellComponent";
+import Modal from "./Modal/Modal";
 
 interface BoardProps {
 	board: Board;
+	restart: () => void;
 	setBoard: (board: Board) => void;
 	currentPlayer: Player | null;
 	swapPlayer: () => void;
@@ -16,8 +19,10 @@ const BoardComponent: FC<BoardProps> = ({
 	setBoard,
 	currentPlayer,
 	swapPlayer,
+	restart,
 }) => {
 	const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
+	const [winner, setWinner] = useState<Colors | null>(null);
 
 	function click(cell: Cell) {
 		if (
@@ -31,6 +36,7 @@ const BoardComponent: FC<BoardProps> = ({
 		} else {
 			if (cell.figure?.color === currentPlayer?.color) setSelectedCell(cell);
 		}
+		if (cell.board.winner) setWinner(cell.board.winner);
 	}
 
 	useEffect(() => highLightCells(), [selectedCell]);
@@ -64,6 +70,22 @@ const BoardComponent: FC<BoardProps> = ({
 					</React.Fragment>
 				))}
 			</div>
+
+			{winner && (
+				<Modal
+					children={
+						<form>
+							<h1>{winner} won!</h1>
+							<button
+								onClick={(e: React.MouseEvent<HTMLElement>) => {
+									restart();
+								}}>
+								Restart
+							</button>
+						</form>
+					}
+				/>
+			)}
 		</div>
 	);
 };
