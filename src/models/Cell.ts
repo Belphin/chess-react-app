@@ -113,7 +113,11 @@ export class Cell {
 	}
 
 	moveFigure(target: Cell) {
-		if (target.figure?.name === FigureNames.ROOK) {
+		if (
+			this.figure?.name === FigureNames.KING &&
+			target.figure?.name === FigureNames.ROOK &&
+			target.figure?.color === this.figure?.color
+		) {
 			this.figure?.castlingFigure(target);
 		} else if (this.figure && this.figure?.canMove(target)) {
 			this.figure?.moveFigure(target);
