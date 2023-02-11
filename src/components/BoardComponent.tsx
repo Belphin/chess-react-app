@@ -76,12 +76,7 @@ const BoardComponent: FC<BoardProps> = ({
 					children={
 						<form>
 							<h1>{winner} won!</h1>
-							<button
-								onClick={(e: React.MouseEvent<HTMLElement>) => {
-									restart();
-								}}>
-								Restart
-							</button>
+							<button onClick={restart}>Restart</button>
 						</form>
 					}
 				/>
